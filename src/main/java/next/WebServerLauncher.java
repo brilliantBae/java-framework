@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 public class WebServerLauncher {
     private static final Logger logger = LoggerFactory.getLogger(WebServerLauncher.class);
+
     // tomcat container 사용
     public static void main(String[] args) throws Exception {
         String webappDirLocation = "webapp/";

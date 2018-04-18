@@ -3,7 +3,6 @@ package core.mvc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +15,10 @@ import java.io.IOException;
 // 서블릿 컨테이너 역할
 @WebServlet(name = "dispatcher", urlPatterns = "/", loadOnStartup = 1)
 public class DispatcherServlet extends HttpServlet {
-    
-	private static final long serialVersionUID = 1L;
 
-	private static final Logger log = LoggerFactory.getLogger(DispatcherServlet.class);
+    private static final long serialVersionUID = 1L;
+
+    private static final Logger log = LoggerFactory.getLogger(DispatcherServlet.class);
 
     private RequestMapping requestMapping;
 
@@ -32,16 +31,10 @@ public class DispatcherServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURI();
         log.debug("url : {}", url);
+
         Controller controller = requestMapping.find(url);
-        String location = controller.execute(req, resp);
-        log.debug("location :  {}", location);
-		if (location.startsWith("redirect:")) {
-			String real = location.substring(9);
-			log.debug("real : {}", real);
-			resp.sendRedirect(real);
-			return;
-		}
-        RequestDispatcher rd = req.getRequestDispatcher(location);
-        rd.forward(req, resp);
+        // 클라이언트 요청 처리
+        ModelAndView modelAndView = controller.execute(req, resp);
+        modelAndView.getView().render(modelAndView.getModel(), req, resp);
     }
 }

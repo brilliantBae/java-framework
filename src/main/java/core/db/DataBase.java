@@ -9,6 +9,7 @@ import next.model.User;
 
 public class DataBase {
     private static Map<String, User> users = Maps.newHashMap();
+
     static {
         users.put("admin", new User("admin", "password", "자바지기", "admin@slipp.net"));
     }

@@ -46,6 +46,7 @@ public abstract class JdbcTemplate {
                 T object = rm.mapRow(rs);
                 objects.add(object);
             }
+
         } catch (SQLException e) {
             throw new DataAccessException(e);
         }
