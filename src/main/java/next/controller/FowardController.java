@@ -13,8 +13,8 @@ import java.io.IOException;
 // The controller that only handle simple view changing function with no such special logic.
 public class FowardController implements Controller {
     private String path;
-
-    public FowardController(String path) {
+  
+    public FowardController(String path){
         this.path = path;
     }
 
