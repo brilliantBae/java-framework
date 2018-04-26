@@ -41,7 +41,6 @@ public class QuestionController {
         log.debug("Question : {}", question);
 
         questionService.insert(question);
-
         return new ModelAndView(new JspView("redirect:/"));
     }
 
@@ -49,7 +48,6 @@ public class QuestionController {
     public ModelAndView showQuestion(HttpServletRequest req, HttpServletResponse res) throws IOException {
         // questions
         Long questionId = Long.parseLong(req.getParameter("questionId"));
-
         Question question = questionService.findById(questionId);
 
         req.setAttribute("question", question);

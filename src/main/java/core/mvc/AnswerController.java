@@ -52,7 +52,6 @@ public class AnswerController {
         Long answerId = Long.parseLong(para);
 
         Result result = answerService.delete(answerId);
-
         return new ModelAndView(new JsonView()).addObject("result", result);
     }
 }

@@ -3,6 +3,7 @@ package next.dao;
 import java.util.List;
 
 import core.annotation.Inject;
+
 import core.annotation.Repository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -3,6 +3,7 @@ package next.dao;
 import java.util.List;
 
 import core.annotation.Inject;
+
 import core.annotation.Repository;
 import next.model.User;
 

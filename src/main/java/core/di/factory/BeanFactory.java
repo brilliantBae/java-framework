@@ -24,6 +24,7 @@ public class BeanFactory { // 프레임워크의 bean 들을 설정해주는 클
     public BeanFactory(BeanDefinition beanDefinition) {
         this.beanDefinition = beanDefinition;
         this.beanCandidates = this.beanDefinition.getBeanCandidates();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -32,7 +33,6 @@ public class BeanFactory { // 프레임워크의 bean 들을 설정해주는 클
     }
 
     // 프레임워크가 시작되면서 프레임워크가 관리해야 할 인스턴스들(= bean)을 생성하는 부분
-
     public void initialize() {
         // DI 실행
         this.beanDefinition.getBeanCandidates().forEach(candidate -> {
