@@ -2,6 +2,7 @@ package core.mvc;
 
 import core.annotation.Controller;
 import core.annotation.Inject;
+
 import core.annotation.RequestMapping;
 import core.annotation.RequestMethod;
 import next.dao.AnswerDao;
@@ -9,6 +10,7 @@ import next.dao.QuestionDao;
 import next.model.Question;
 import next.service.AnswerService;
 import next.service.QuestionService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +43,6 @@ public class QuestionController {
         log.debug("Question : {}", question);
 
         questionService.insert(question);
-
         return new ModelAndView(new JspView("redirect:/"));
     }
 
@@ -49,7 +50,6 @@ public class QuestionController {
     public ModelAndView showQuestion(HttpServletRequest req, HttpServletResponse res) throws IOException {
         // questions
         Long questionId = Long.parseLong(req.getParameter("questionId"));
-
         Question question = questionService.findById(questionId);
 
         req.setAttribute("question", question);

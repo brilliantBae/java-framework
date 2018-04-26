@@ -7,6 +7,7 @@ import next.model.Answer;
 import next.model.Result;
 import next.model.User;
 import next.service.AnswerService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,7 @@ import java.io.IOException;
 @Controller
 public class AnswerController {
     private static final Logger log = LoggerFactory.getLogger(AnswerController.class);
+
     private AnswerService answerService;
 
     @Inject
@@ -52,7 +54,6 @@ public class AnswerController {
         Long answerId = Long.parseLong(para);
 
         Result result = answerService.delete(answerId);
-
         return new ModelAndView(new JsonView()).addObject("result", result);
     }
 }

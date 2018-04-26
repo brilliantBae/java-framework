@@ -2,10 +2,10 @@ package core.mvc;
 
 import core.annotation.Controller;
 import core.annotation.Inject;
+
 import core.annotation.RequestMapping;
 import core.annotation.RequestMethod;
 import next.controller.UserSessionUtils;
-import next.dao.UserDao;
 import next.model.User;
 import next.service.UserService;
 import org.slf4j.Logger;
@@ -40,7 +40,6 @@ public class UserController {
         log.debug("User : {}", user);
 
         userService.insert(user);
-
         return new ModelAndView(new JspView("redirect:/"));
     }
 
@@ -75,7 +74,6 @@ public class UserController {
     @RequestMapping(value = "/users/update", method = RequestMethod.POST)
     public ModelAndView update(HttpServletRequest req, HttpServletResponse res) {
         User user = userService.findByUserId(req.getParameter("userId"));
-
         if (!UserSessionUtils.isSameUser(req.getSession(), user)) {
             throw new IllegalStateException("다른 사용자의 정보를 수정할 수 없습니다.");
         }
@@ -85,7 +83,6 @@ public class UserController {
 
         log.debug("Update User : {}", updateUser);
         userService.update(updateUser);
-
         return new ModelAndView(new JspView("redirect:/"));
     }
 
@@ -94,7 +91,6 @@ public class UserController {
         String userId = req.getParameter("userId");
 
         User user = userService.findByUserId(userId);
-
         if (user == null) {
             throw new NullPointerException("사용자를 찾을 수 없습니다.");
         }
